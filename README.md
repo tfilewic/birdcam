@@ -1,5 +1,6 @@
 # Birdcam
-Embedded camera system with on-device bird detection and classification using machine learning
+Embedded camera system with on-device bird detection and classification using machine learning.<br>
+Control logic and inference in C++; model training and conversion in Python.
 
 ## Project will:
 - [ ] Use a camera module to detect bird presence  
@@ -14,7 +15,6 @@ Embedded camera system with on-device bird detection and classification using ma
 - **Raspberry Pi** – embedded hardware platform  
 - **TensorFlow Lite** – lightweight ML inference  
 - **OpenCV** – image capture and motion detection  
-- **Python** – control logic and scripting  
 - **CSV** – simple local data storage  
 - **Spotfire** – data analysis and visualization
 
