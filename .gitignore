@@ -1,0 +1,48 @@
+#Build artifacts
+build/
+cmake-build*/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+*.a
+*.o
+*.so
+*.dll
+*.dylib
+
+#Executables
+birdcam
+birdcam.exe
+
+#Logs and CSV output
+*.log
+*.csv
+
+#Image output
+images/
+output/
+*.jpg
+*.jpeg
+*.png
+
+#Python virtual environments
+venv/
+.env/
+*.pyc
+__pycache__/
+
+#Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+#System files
+.DS_Store
+Thumbs.db
+
+#Test artifacts
+test_output/
+
+#Local documents
+plan.md
