@@ -10,14 +10,15 @@
 
 
 #include "Logger.h"
+#include <filesystem>
 #include <fstream>
 #include <string>
 
-Logger::Logger() : headerWritten(false) { 
-}
+
+Logger::Logger() {}
 
 static void logError(const std::string &message) {
-    std::ofstream errorLog("error.log", std::ios::app);
+    std::ofstream errorLog("error.log", std::ios::out);
     if (!errorLog) return;
     errorLog << message << "\n";
 }
@@ -30,11 +31,11 @@ void Logger::writeHeader() {
     }
 
     file << CSV_HEADER << "\n";
-    headerWritten = true;
 }
 
 void Logger::logEvent(const DetectionEvent &event) {
-    if (!headerWritten) {
+    const bool fileExists = std::filesystem::exists(CSV_FILE);
+    if (!fileExists) {
         writeHeader();
     }
 

@@ -20,7 +20,6 @@ class Logger {
     private:
         static constexpr const char* CSV_FILE = "detections.csv";
         static constexpr const char* CSV_HEADER = "timestamp,path";
-        bool headerWritten;
         void writeHeader();
 };
 
