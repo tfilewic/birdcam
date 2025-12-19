@@ -9,16 +9,28 @@ classDiagram
     class Logger
     class Uploader
     class Server
+    class Frame
+    class DetectionEvent
 
-    %% Composition (filled diamond in UML)
+    %% Composition
     Controller *-- MotionDetector
     Controller *-- Camera
     Controller *-- ImageSaver
     Controller *-- Logger
     Controller *-- Uploader
 
-    %% Dependency (dashed arrow)
+    %% Data flow / usage
+    Camera ..> Frame
+    ImageSaver ..> Frame
+    Controller ..> Frame
+    Controller ..> DetectionEvent
+    Logger ..> DetectionEvent
+    Uploader ..> DetectionEvent
+
+    %% Dependency
     Uploader ..> Server
+
+
 ```
 
 
@@ -27,10 +39,8 @@ classDiagram
 sequenceDiagram
     autonumber
 
-    actor Environment
-
-    participant MotionDetector
     participant Controller
+    participant MotionDetector
     participant Camera
     participant ImageSaver
     participant Logger
@@ -38,21 +48,26 @@ sequenceDiagram
     participant Server
 
     loop Idle / Waiting
-        Environment ->> MotionDetector: PIR triggers
-        MotionDetector ->> Controller: motionDetected()
+        Controller ->> MotionDetector: waitForMotion()
+        MotionDetector -->> Controller: returns (motion detected)
     end
 
-    Controller ->> Camera: captureFrame()
-    Camera -->> Controller: frame
+    Controller ->> Camera: capture()
+    Camera -->> Controller: Frame
 
-    Controller ->> ImageSaver: save(frame, timestamp)
+    Controller ->> Controller: getTimestamp()
+
+    Controller ->> ImageSaver: save(&frame, timestamp)
     ImageSaver -->> Controller: imagePath
 
-    Controller ->> Logger: log(timestamp, imagePath, source="PIR")
+    Controller ->> Controller: DetectionEvent{timestamp, imagePath}
+
+    Controller ->> Logger: log(event)
 
     alt Upload enabled
-        Controller ->> Uploader: upload(imagePath, timestamp)
-        Uploader ->> Server: POST /detections (image + metadata)
+        Controller ->> Uploader: upload(event)
+        Uploader ->> Server: POST /detections
         Server -->> Uploader: 200 OK
     end
+
 ```
