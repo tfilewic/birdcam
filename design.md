@@ -62,7 +62,7 @@ sequenceDiagram
 
     Controller ->> Controller: DetectionEvent{timestamp, imagePath}
 
-    Controller ->> Logger: log(event)
+    Controller ->> Logger: logEvent(event)
 
     alt Upload enabled
         Controller ->> Uploader: upload(event)

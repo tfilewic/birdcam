@@ -5,7 +5,7 @@ Control logic and inference in C++; model training and conversion in Python.
 ## Project will:
 - [ ] Use a camera module to detect bird presence  
 - [ ] Capture images on detection
-- [ ] Log detection results to a CSV file
+- [X] Log detection results to a CSV file
 - [ ] Upload detection data and images to a remote server  
 - [ ] Classify bird species using a ML model  
 - [ ] Provide an image viewing interface

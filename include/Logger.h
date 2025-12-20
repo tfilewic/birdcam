@@ -10,11 +10,9 @@
 
 #include "DetectionEvent.h"
 
-
 class Logger {
 
     public:
-        Logger();
         void logEvent(const DetectionEvent &event);
 
     private:

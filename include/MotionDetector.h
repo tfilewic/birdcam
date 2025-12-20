@@ -1,6 +1,19 @@
 /**
- * @file Controller.cpp
- * @brief Main birdcam control loop.
+ * @file MotionDetector.h
+ * @brief Motion sensor handler.
  * @author tfilewic
- * @date 2025-12-09
+ * @date 2025-12-17
  */
+#ifndef MOTIONDETECTOR_H
+#define MOTIONDETECTOR_H
+
+
+class MotionDetector {
+
+    public:
+        bool waitForMotion();
+
+};
+
+
+#endif

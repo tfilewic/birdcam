@@ -8,8 +8,10 @@ add_executable(
     logger_smoke
     test/smoke/logger_smoke.cpp
     src/Logger.cpp
+    src/Utilities.cpp
 )
 
 target_include_directories(
     logger_smoke PRIVATE include
+
 )

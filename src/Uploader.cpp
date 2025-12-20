@@ -5,5 +5,16 @@
  * Handles network communication, retries, and errors.
  *
  * @author tfilewich
- * @version 2025-12-09
+ * @version 2025-12-18
  */
+
+
+#include <iostream>
+#include "DetectionEvent.h"
+
+
+// TODO: implement stub
+bool Uploader::upload(const DetectionEvent& event) {
+    std::cout << "Uploaded: " << event.timestamp << " " << event.imagePath << "\n"; 
+    return true; 
+}

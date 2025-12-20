@@ -1,11 +1,20 @@
 /**
  * @file Controller.cpp
  * 
- * @brief Main birdcam control loop.
+ * @brief Motion sensor handler.
  * 
- * Coordinates Camera, MotionDetector, ImageSaver, Logger, and optional Uploader.
- * Waits for motion events, triggers captures, saves images, and logs each event.
+ * Manages the PIR sensor to detects motion events.
  * 
  * @author tfilewic
- * @date 2025-12-09
+ * @date 2025-12-17
  */
+
+
+#include "MotionDetector.h"
+#include <unistd.h>
+
+// TODO: implement stub
+bool MotionDetector::waitForMotion() {
+    sleep(5);
+    return true;    
+}

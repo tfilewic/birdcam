@@ -2,7 +2,7 @@
  * @file Frame.h
  * @brief Data structure representing a single captured camera frame.
  * @author tfilewic
- * @version 2025-12-18
+ * @version 2025-12-19
  */
 
 #ifndef FRAME_H
@@ -20,7 +20,7 @@ enum class PixelFormat {
 };
 
 struct Frame {
-    ustd::vector<uint8_t> data;
+    std::vector<uint8_t> data;
     uint32_t width;
     uint32_t height;
     uint32_t stride;
