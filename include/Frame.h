@@ -9,22 +9,15 @@
 #define FRAME_H
 
 #include <vector>
+#include <cstddef>
 #include <cstdint>
 
 
-enum class PixelFormat {
-    YUYV,
-    YUV420,
-    RGB24,
-    BGR24
-};
-
 struct Frame {
-    std::vector<uint8_t> data;
-    uint32_t width;
-    uint32_t height;
-    uint32_t stride;
-    PixelFormat format;
+    std::vector<uint8_t> data;  //NV12 pixel map
+    size_t width;
+    size_t height;
+    size_t stride;
 };
 
 

@@ -11,7 +11,18 @@ add_executable(
     src/Utilities.cpp
 )
 
+add_executable(
+    image_saver_smoke
+    test/smoke/image_saver_smoke.cpp
+    src/ImageSaver.cpp
+    src/Utilities.cpp
+)
+
+
 target_include_directories(
     logger_smoke PRIVATE include
+)
 
+target_include_directories(
+    image_saver_smoke PRIVATE include
 )

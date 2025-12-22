@@ -1,5 +1,4 @@
 #include "Logger.h"
-#include "DetectionEvent.h"
 
 int main() {
     DetectionEvent event1 {
