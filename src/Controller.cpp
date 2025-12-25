@@ -33,7 +33,7 @@ static std::string getTimestamp() {
     std::tm tm{};
     localtime_r(&now, &tm); //convert to local time and write to tm struct
 
-    std::strftime(buffer, sizeof(buffer), "%Y-%m-%dT%H:%M:%S", &tm);    //format
+    std::strftime(buffer, sizeof(buffer), "%Y-%m-%dT%H-%M-%S", &tm);    //format
     return std::string(buffer);
 }
 
