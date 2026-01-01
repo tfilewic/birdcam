@@ -11,7 +11,7 @@
 class MotionDetector {
 
     public:
-        bool waitForMotion();
+        void waitForMotion();
 
 };
 
