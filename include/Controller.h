@@ -5,8 +5,8 @@
  * @date 2025-12-18
  */
 
-#ifndef MOTIONDETECTOR_H
-#define MOTIONDETECTOR_H
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
 #include "Camera.h"
 #include "ImageSaver.h"

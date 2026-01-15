@@ -10,6 +10,7 @@
 
 
 #include <iostream>
+#include "Uploader.h"
 #include "DetectionEvent.h"
 
 

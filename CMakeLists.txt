@@ -1,7 +1,25 @@
 cmake_minimum_required(VERSION 3.23)
 project(birdcam)
 set(CMAKE_CXX_STANDARD 17)
-#add_executable(birdcam src/controller.cpp)
+
+
+add_executable(
+    birdcam 
+    src/main.cpp
+    src/Camera.cpp
+    src/Controller.cpp
+    src/ImageSaver.cpp
+    src/Logger.cpp
+    src/MotionDetector.cpp
+    src/Uploader.cpp
+    src/Utilities.cpp
+)
+target_include_directories(
+    birdcam PRIVATE include
+)
+target_link_libraries(
+    birdcam PRIVATE gpiod
+)
 
 
 add_executable(
@@ -10,6 +28,10 @@ add_executable(
     src/Logger.cpp
     src/Utilities.cpp
 )
+target_include_directories(
+    logger_smoke PRIVATE include
+)
+
 
 add_executable(
     image_saver_smoke
@@ -17,12 +39,6 @@ add_executable(
     src/ImageSaver.cpp
     src/Utilities.cpp
 )
-
-
-target_include_directories(
-    logger_smoke PRIVATE include
-)
-
 target_include_directories(
     image_saver_smoke PRIVATE include
 )
