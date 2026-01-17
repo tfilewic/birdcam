@@ -7,9 +7,10 @@ on:
 jobs:
   smoke:
     runs-on: ubuntu-latest
+    container: debian:trixie
     steps:
       - uses: actions/checkout@v4
       - name: Install build tools
-        run: sudo apt-get update && sudo apt-get install -y cmake g++ libgpiod-dev
+        run: apt-get update && apt-get install -y cmake g++ python3 libgpiod-dev 
       - name: Run smoke tests
         run: python3 test/smoke/smoke.py
