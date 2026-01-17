@@ -21,7 +21,10 @@
 #include "Uploader.h"
 #include <ctime>
 #include <string>
+#include <unistd.h> 
 
+
+const int COOLDOWN = 3;
 
 /**
  * @brief Returns current local timestamp
@@ -50,13 +53,15 @@ Controller::Controller()
 void Controller::run() {
 
     while (true) {
-        motionDetector.waitForMotion();
-        Frame frame = camera.capture();
-        std::string timestamp = getTimestamp();
-        std::string path = imageSaver.save(&frame, timestamp);
-        DetectionEvent event{timestamp, path};
-        logger.logEvent(event);
-        uploader.upload(event);
+        if (motionDetector.waitForMotion()) {
+            Frame frame = camera.capture();
+            std::string timestamp = getTimestamp();
+            std::string path = imageSaver.save(&frame, timestamp);
+            DetectionEvent event{timestamp, path};
+            logger.logEvent(event);
+            uploader.upload(event);
+        }
+        sleep(COOLDOWN);
     }
 
 }
