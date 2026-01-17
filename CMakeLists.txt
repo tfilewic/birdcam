@@ -42,3 +42,17 @@ add_executable(
 target_include_directories(
     image_saver_smoke PRIVATE include
 )
+
+
+add_executable(
+    motion_detector_smoke
+    test/manual/motion_detector_smoke.cpp
+    src/MotionDetector.cpp
+    src/Utilities.cpp
+)
+target_include_directories(
+    motion_detector_smoke PRIVATE include
+)
+target_link_libraries(
+    motion_detector_smoke PRIVATE gpiod
+)
