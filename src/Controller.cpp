@@ -3,22 +3,21 @@
  * 
  * @brief Main birdcam control loop.
  * 
- * Coordinates Camera, MotionDetector, ImageSaver, Logger, and Uploader.
+ * Coordinates Camera, MotionDetector, Logger, and Uploader.
  * Waits for motion events, triggers captures, saves images, and logs each event.
  * 
  * @author tfilewic
- * @date 2025-12-17
+ * @date 2026-12-17
  */
 
  
 #include "Camera.h"
 #include "Controller.h"
 #include "DetectionEvent.h"
-#include "Frame.h"
-#include "ImageSaver.h"
 #include "Logger.h"
 #include "MotionDetector.h"
 #include "Uploader.h"
+#include "Utilities.h"
 #include <ctime>
 #include <string>
 #include <unistd.h> 
@@ -44,7 +43,6 @@ static std::string getTimestamp() {
 
 Controller::Controller()
     : camera(),
-      imageSaver(),
       logger(),
       motionDetector(),
       uploader()
@@ -58,7 +56,7 @@ void Controller::run() {
             std::string timestamp = getTimestamp();
             std::string path = camera.capture(timestamp);
             DetectionEvent event{timestamp, path};
-            logger.logEvent(event);
+            logger.logDetection(event);
             uploader.upload(event);
         }
         sleep(COOLDOWN);

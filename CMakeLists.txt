@@ -8,7 +8,6 @@ add_executable(
     src/main.cpp
     src/Camera.cpp
     src/Controller.cpp
-    src/ImageSaver.cpp
     src/Logger.cpp
     src/MotionDetector.cpp
     src/Uploader.cpp
@@ -30,17 +29,6 @@ add_executable(
 )
 target_include_directories(
     logger_smoke PRIVATE include
-)
-
-
-add_executable(
-    image_saver_smoke
-    test/smoke/image_saver_smoke.cpp
-    src/ImageSaver.cpp
-    src/Utilities.cpp
-)
-target_include_directories(
-    image_saver_smoke PRIVATE include
 )
 
 
