@@ -1,8 +1,8 @@
 /**
  * @file Camera.h
  * @brief Camera interface.
- * @author tfilewic
- * @version 2025-12-09
+ * @author tfilewich
+ * @version 2026-01-18
  */
 
 #ifndef CAMERA_H
@@ -13,9 +13,8 @@
 class Camera {
 
     public:
-        Frame capture();
-        
-};
+        std::string capture(const std::string& timestamp);
 
+}
 
 #endif

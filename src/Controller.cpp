@@ -26,6 +26,7 @@
 
 const int COOLDOWN = 3;
 
+
 /**
  * @brief Returns current local timestamp
  */
@@ -36,7 +37,7 @@ static std::string getTimestamp() {
     std::tm tm{};
     localtime_r(&now, &tm); //convert to local time and write to tm struct
 
-    std::strftime(buffer, sizeof(buffer), "%Y-%m-%dT%H-%M-%S", &tm);    //format
+    std::strftime(buffer, sizeof(buffer), "%Y-%m-%dT%H%M-%S", &tm);    //format
     return std::string(buffer);
 }
 
@@ -54,9 +55,8 @@ void Controller::run() {
 
     while (true) {
         if (motionDetector.waitForMotion()) {
-            Frame frame = camera.capture();
             std::string timestamp = getTimestamp();
-            std::string path = imageSaver.save(&frame, timestamp);
+            std::string path = camera.capture(timestamp);
             DetectionEvent event{timestamp, path};
             logger.logEvent(event);
             uploader.upload(event);
