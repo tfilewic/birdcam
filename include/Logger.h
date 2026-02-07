@@ -13,7 +13,7 @@
 class Logger {
 
     public:
-        void logEvent(const DetectionEvent &event);
+        void logDetection(const DetectionEvent &event);
 
     private:
         static constexpr const char* CSV_FILE = "detections.csv";

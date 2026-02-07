@@ -12,8 +12,8 @@ int main() {
     Logger logger;
 
 
-    logger.logEvent(event1);
-    logger.logEvent(event2);
+    logger.logDetection(event1);
+    logger.logDetection(event2);
     
     return 0;
 }

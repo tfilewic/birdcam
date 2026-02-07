@@ -1,6 +1,6 @@
 /**
  * @file Logger.cpp
- * @brief Logs detection events and system activity.
+ * @brief Logs detection events
  *
  * Appends timestamped event records to a CSV log file.
  *
@@ -26,7 +26,7 @@ void Logger::writeHeader() {
     file << CSV_HEADER << "\n";
 }
 
-void Logger::logEvent(const DetectionEvent &event) {
+void Logger::logDetection(const DetectionEvent &event) {
     const bool fileExists = std::filesystem::exists(CSV_FILE);
     if (!fileExists) {
         writeHeader();

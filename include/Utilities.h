@@ -12,7 +12,7 @@
 
 
 void logError(const std::string &message);   //writes errors to error log
-
+std::string getTimestamp(); 
 
 #endif
 

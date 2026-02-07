@@ -19,26 +19,14 @@
 #include "Uploader.h"
 #include "Utilities.h"
 #include <ctime>
+#include <iostream>
 #include <string>
 #include <unistd.h> 
 
 
-const int COOLDOWN = 3;
 
+const int COOLDOWN = 10;
 
-/**
- * @brief Returns current local timestamp
- */
-static std::string getTimestamp() {
-    std::time_t now = std::time(nullptr);   //current POSIX system time
-
-    char buffer[20];
-    std::tm tm{};
-    localtime_r(&now, &tm); //convert to local time and write to tm struct
-
-    std::strftime(buffer, sizeof(buffer), "%Y-%m-%dT%H%M-%S", &tm);    //format
-    return std::string(buffer);
-}
 
 
 Controller::Controller()
@@ -51,13 +39,22 @@ Controller::Controller()
 
 void Controller::run() {
 
+
+
+    //TODO log this with ts
+    std::cout << "====== birdcam started ====== \n";
+
     while (true) {
+
         if (motionDetector.waitForMotion()) {
             std::string timestamp = getTimestamp();
-            std::string path = camera.capture(timestamp);
-            DetectionEvent event{timestamp, path};
-            logger.logDetection(event);
-            uploader.upload(event);
+            // std::string path = camera.capture(timestamp);
+            // DetectionEvent event{timestamp, path};
+            // logger.logDetection(event);
+
+            std::vector<std::string> paths = camera.burst(timestamp, 3);
+            
+            //uploader.upload(event);
         }
         sleep(COOLDOWN);
     }
