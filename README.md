@@ -3,8 +3,8 @@ Embedded Linux camera system with on-device bird detection and classification us
 Control logic and inference in C++; model training and conversion in Python.
 
 ## Project will:
-- [ ] Use a camera module to detect bird presence  
-- [ ] Capture images on detection
+- [X] Use a PIR detect bird presence  
+- [X] Capture images on detection
 - [X] Log detection results to a CSV file
 - [ ] Upload detection data and images to a remote server  
 - [ ] Classify bird species using a ML model  
@@ -13,11 +13,12 @@ Control logic and inference in C++; model training and conversion in Python.
 - [ ] Optimize model and system for low-power, headless operation on Raspberry Pi
 
 ## Technologies Used
-- **Raspberry Pi** – embedded Linux platform  
-- **OpenCV** - image capture
+- **Raspberry Pi** – embedded Linux platform
+- **libcamera** - RPI camera stack
 - **CSV** - local data storage  
-- **TensorFlow Lite** - lightweight ML inference  
+- **TensorFlow Lite** - ML inference  
 - **HTML** -  simple image viewing interface
 - **React** - data analysis and visualization
+
 
 
