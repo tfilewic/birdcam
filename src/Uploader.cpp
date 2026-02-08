@@ -9,13 +9,22 @@
  */
 
 
+//#include <curl/curl.h>
 #include <iostream>
 #include "Uploader.h"
 #include "DetectionEvent.h"
 
 
+
 // TODO: implement stub
+    //build request
+    //enqueue
 bool Uploader::upload(const DetectionEvent& event) {
-    std::cout << "Uploaded: " << event.timestamp << " " << event.imagePath << "\n"; 
+    
+    std::cout << "Uploading event: " << event.timestamp << "\n";
+    for (const auto& path : event.paths) {
+        std::cout << "  " << path << "\n";
+    }
+
     return true; 
 }

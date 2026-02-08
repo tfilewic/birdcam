@@ -9,6 +9,7 @@
 #define DETECTIONEVENT_H
 
 #include <string>
+#include <vector>
 
 
 struct DetectionEvent {
