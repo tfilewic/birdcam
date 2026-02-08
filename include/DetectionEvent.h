@@ -1,8 +1,8 @@
 /**
  * @file DetectionEvent.h
  * @brief Data structure representing a single detection event.
- * @author tfilewich
- * @version 2025-12-12
+ * @author tfilewic
+ * @version 2026-02-07
  */
 
 #ifndef DETECTIONEVENT_H
@@ -13,7 +13,7 @@
 
 struct DetectionEvent {
     std::string timestamp;
-    std::string imagePath;  
+    std::vector<std::string> paths;
 };
 
 

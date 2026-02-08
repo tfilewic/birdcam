@@ -38,10 +38,13 @@ void Logger::logDetection(const DetectionEvent &event) {
         return;
     }
 
-    file << event.timestamp;
-    file << ",";
-    file << event.imagePath;
-    file << "\n";
+    for (const auto& path : event.paths) {
+        file << event.timestamp;
+        file << ",";
+        file << path;
+        file << "\n";
+    }
+
 }
 
 

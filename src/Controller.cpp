@@ -7,7 +7,7 @@
  * Waits for motion events, triggers captures, saves images, and logs each event.
  * 
  * @author tfilewic
- * @date 2026-12-17
+ * @date 2026-02-07
  */
 
  
@@ -41,7 +41,7 @@ void Controller::run() {
 
 
 
-    //TODO log this with ts
+    //TODO log this with ts 
     std::cout << "====== birdcam started ====== \n";
 
     while (true) {
@@ -53,7 +53,9 @@ void Controller::run() {
             // logger.logDetection(event);
 
             std::vector<std::string> paths = camera.burst(timestamp, 3);
-            
+            DetectionEvent event{timestamp, paths};
+            logger.logDetection(event);
+
             //uploader.upload(event);
         }
         sleep(COOLDOWN);
